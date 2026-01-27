@@ -11,6 +11,10 @@ def env_bool(name: str, default: bool = False) -> bool:
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'unsafe-dev-key')
 DEBUG = env_bool('DJANGO_DEBUG', False)
+CSRF_TRUSTED_ORIGINS = [
+    f"https://{os.environ.get('RAILWAY_PUBLIC_DOMAIN', 'toki-production.up.railway.app')}"
+]
+
 # print DEBUG value on startup
 print("OOPs DJANGO DEBUG =", DEBUG)
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '*').split(',')
