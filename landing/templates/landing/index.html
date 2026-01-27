@@ -1,0 +1,14 @@
+{% extends 'landing/base.html' %}
+{% load static %}
+{% block title %}Toki — Conversational solutions{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Toki</h1>
+    <img src="{% static 'landing/images/birds.png' %}" alt="Toki logo" class="hero-logo">
+    <p class="tagline">Humans-first conversational services — simple, reliable, always online.</p>
+    <p><a class="cta" href="/contact/">Get in touch</a></p>
+  </div>
+</section>
+{% endblock %}

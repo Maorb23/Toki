@@ -1,0 +1,13 @@
+{% extends 'landing/base.html' %}
+
+{% block title %}Contact — Toki{% endblock %}
+
+{% block content %}
+<h2>Contact</h2>
+<p>Have a question or want to work together? Send a short message.</p>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="cta">Send</button>
+</form>
+{% endblock %}
