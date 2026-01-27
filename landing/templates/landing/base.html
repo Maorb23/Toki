@@ -1,4 +1,8 @@
 {% load static %}
+<!-- ...existing code... -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'landing/css/styles.css' %}">
+<!-- ...existing code... -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,27 +15,31 @@
   </head>
 
   <body>
+    <!-- ...existing code... -->
     <header class="site-header">
-      <div class="container">
-        <a class="brand" href="/">
-          <img src="{% static 'landing/images/birds.png' %}" alt="Birds" class="brand-logo">
-          <span class="brand-text">Toki</span>
+    <nav class="navbar navbar-expand-lg bg-white border-bottom">
+        <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+            <img src="{% static 'landing/images/birds.png' %}" alt="Birds" class="brand-logo">
+            <span class="brand-text">Toki</span>
         </a>
-        <nav class="nav">
-          <a href="/about/">About</a>
-          <a href="/contact/">Contact</a>
-        </nav>
-      </div>
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="/about/">About</a>
+            <a class="nav-link" href="/contact/">Contact</a>
+        </div>
+        </div>
+    </nav>
     </header>
+<!-- ...existing code... -->
 
     <main>
-      <div class="container">
+      <div class="toki-container">
         {% block content %}{% endblock %}
       </div>
     </main>
 
     <footer class="site-footer">
-      <div class="container">© Toki — Simple conversations, always online.</div>
+      <div class="toki-container">© Toki — Simple conversations, always online.</div>
     </footer>
   </body>
 </html>

@@ -1,14 +1,17 @@
+<!-- index.html -->
 {% extends 'landing/base.html' %}
 {% load static %}
 {% block title %}Toki — Conversational solutions{% endblock %}
 
 {% block content %}
-<section class="hero">
-  <div class="hero-inner">
-    <h1>Toki</h1>
-    <img src="{% static 'landing/images/birds.png' %}" alt="Toki logo" class="hero-logo">
-    <p class="tagline">Humans-first conversational services — simple, reliable, always online.</p>
-    <p><a class="cta" href="/contact/">Get in touch</a></p>
+<!-- ...existing code... -->
+<section class="py-5 bg-light">
+  <div class="container text-center">
+    <h1 class="display-5 fw-bold text-success">Toki</h1>
+    <img src="{% static 'landing/images/birds.png' %}" alt="Toki logo" class="hero-logo my-3">
+    <p class="lead text-muted">Humans-first conversational services — simple, reliable, always online.</p>
+    <a class="btn btn-success px-4" href="/contact/">Get in touch</a>
   </div>
 </section>
+<!-- ...existing code... -->
 {% endblock %}
