@@ -3,13 +3,15 @@
 {% block title %}Contact — Toki{% endblock %}
 
 {% block content %}
-<h2>Contact</h2>
-<p>Have a question or want to work together? Send a short message.</p>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <!-- ...existing code... -->
-<button type="submit" class="btn btn-success">Send</button>
-<!-- ...existing code... -->
-</form>
+<section class="py-5">
+  <div class="container">
+    <h2 class="mb-3">Contact</h2>
+    <p class="text-muted">Have a question or want to work together? Send a short message.</p>
+    <form method="post" class="mt-4">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-success">Send</button>
+    </form>
+  </div>
+</section>
 {% endblock %}

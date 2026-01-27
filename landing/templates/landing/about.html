@@ -1,8 +1,77 @@
 {% extends 'landing/base.html' %}
+{% load static %}
 
 {% block title %}About — Toki{% endblock %}
 
 {% block content %}
-<h2>About Toki</h2>
-<p>Toki provides simple, reliable conversational tools for small teams and projects. We focus on clarity, uptime, and a clean user experience.</p>
+<section class="py-5">
+	<div class="container">
+		<div class="row align-items-center g-5">
+			<div class="col-lg-6">
+				<p class="text-uppercase small text-muted mb-2">About</p>
+				<h2 class="mb-3">Clear, reliable conversations</h2>
+				<p class="text-muted">
+					Toki provides simple, reliable conversational tools for small teams and projects. We focus on clarity, uptime,
+					and a clean user experience — formal enough for professional workflows, approachable enough for daily use.
+				</p>
+				<div class="d-flex flex-wrap gap-2 mt-3">
+					<span class="badge bg-light text-muted border">Principled design</span>
+					<span class="badge bg-light text-muted border">Operational focus</span>
+					<span class="badge bg-light text-muted border">Consistent delivery</span>
+				</div>
+			</div>
+			<div class="col-lg-6 text-center">
+            <img src="{% static 'landing/images/Toki_1_standing3.jpg' %}"
+                alt="Toki standing"
+                class="img-fluid about-hero-img rounded mx-auto d-block">
+            </div>
+		</div>
+	</div>
+</section>
+
+<section class="py-5 bg-light">
+	<div class="container">
+		<div class="row g-4">
+			<div class="col-md-4">
+				<div class="feature-card p-4 h-100">
+					<h5 class="mb-2">Principled design</h5>
+					<p class="text-muted mb-0">A neutral, professional interface that stays out of the way.</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="feature-card p-4 h-100">
+					<h5 class="mb-2">Operational focus</h5>
+					<p class="text-muted mb-0">Clear touchpoints from onboarding to ongoing support.</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="feature-card p-4 h-100">
+					<h5 class="mb-2">Consistent delivery</h5>
+					<p class="text-muted mb-0">Stable performance backed by monitoring and simple processes.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="py-5">
+	<div class="container">
+		<div class="row g-4 align-items-center">
+			<div class="col-md-6">
+				<div class="col-lg-6 text-center">
+            <img src="{% static 'landing/images/sitting_fullhouse.jpg' %}"
+                alt="Toki standing"
+                class="img-fluid about-hero-img rounded mx-auto d-block">
+            </div>
+			</div>
+			<div class="col-md-6">
+				<h3 class="mb-3">Built for companies who want an ingenious solution to hard questions</h3>
+				<p class="text-muted mb-0">
+					We keep configuration lightweight and communication direct — designed for teams that want a dependable
+					conversational layer without operational overhead.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
 {% endblock %}

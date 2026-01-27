@@ -1,8 +1,4 @@
 {% load static %}
-<!-- ...existing code... -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'landing/css/styles.css' %}">
-<!-- ...existing code... -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,11 +7,11 @@
     <title>{% block title %}Toki{% endblock %}</title>
 
     <link rel="icon" type="image/x-icon" href="{% static 'landing/images/birds.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'landing/css/styles.css' %}">
   </head>
 
   <body>
-    <!-- ...existing code... -->
     <header class="site-header">
     <nav class="navbar navbar-expand-lg bg-white border-bottom">
         <div class="container">
@@ -30,16 +26,13 @@
         </div>
     </nav>
     </header>
-<!-- ...existing code... -->
 
     <main>
-      <div class="toki-container">
-        {% block content %}{% endblock %}
-      </div>
+      {% block content %}{% endblock %}
     </main>
 
     <footer class="site-footer">
-      <div class="toki-container">© Toki — Simple conversations, always online.</div>
+      <div class="container py-3 text-center">© Toki — Simple conversations, always online.</div>
     </footer>
   </body>
 </html>

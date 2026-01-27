@@ -1,17 +1,60 @@
-<!-- index.html -->
 {% extends 'landing/base.html' %}
 {% load static %}
 {% block title %}Toki — Conversational solutions{% endblock %}
 
 {% block content %}
-<!-- ...existing code... -->
-<section class="py-5 bg-light">
-  <div class="container text-center">
-    <h1 class="display-5 fw-bold text-success">Toki</h1>
-    <img src="{% static 'landing/images/birds.png' %}" alt="Toki logo" class="hero-logo my-3">
-    <p class="lead text-muted">Humans-first conversational services — simple, reliable, always online.</p>
-    <a class="btn btn-success px-4" href="/contact/">Get in touch</a>
+<section class="hero-section py-5">
+  <div class="container py-4">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <p class="text-uppercase small text-muted mb-2">Conversational services</p>
+        <h1 class="display-5 fw-bold text-success">Toki</h1>
+        <p class="lead text-muted mt-3">
+          Humans-first conversational services — simple, reliable, always online.
+        </p>
+        <div class="d-flex gap-3 mt-4">
+          <a class="btn btn-success px-4" href="/contact/">Get in touch</a>
+          <a class="btn btn-outline-success px-4" href="/about/">Learn more</a>
+        </div>
+        <div class="d-flex flex-wrap gap-2 mt-4">
+          <span class="badge bg-light text-muted border">Reliable uptime</span>
+          <span class="badge bg-light text-muted border">Privacy-first</span>
+          <span class="badge bg-light text-muted border">Fast onboarding</span>
+        </div>
+      </div>
+      <div class="col-lg-6 text-center">
+        <div class="hero-card p-4">
+          <img src="{% static 'landing/images/birds.png' %}" alt="Toki logo" class="hero-logo mb-3">
+          <h5 class="mb-2">Simple, always‑on conversations</h5>
+          <p class="text-muted mb-0">Designed for small teams and clear communication.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
-<!-- ...existing code... -->
+
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-card p-4 h-100">
+          <h5 class="mb-2">Clarity</h5>
+          <p class="text-muted mb-0">Straightforward interactions focused on outcomes.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card p-4 h-100">
+          <h5 class="mb-2">Reliability</h5>
+          <p class="text-muted mb-0">Stable, monitored, and built for uptime.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card p-4 h-100">
+          <h5 class="mb-2">Support</h5>
+          <p class="text-muted mb-0">Responsive guidance through setup and scale.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}
