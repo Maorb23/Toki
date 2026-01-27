@@ -18,7 +18,8 @@ CSRF_TRUSTED_ORIGINS = [
 # print DEBUG value on startup
 print("OOPs DJANGO DEBUG =", DEBUG)
 #ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '*').split(',')
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'toki-production.up.railway.app']
+#ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'toki-production.up.railway.app']
+ALLOWED_HOSTS = [h.strip() for h in os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(",") if h.strip()]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
