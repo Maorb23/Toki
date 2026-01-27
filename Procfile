@@ -1,1 +1,1 @@
-web: gunicorn toki_site.wsgi --log-file -
+web: python manage.py migrate --noinput && gunicorn toki_site.wsgi --log-file -
