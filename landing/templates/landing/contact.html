@@ -5,13 +5,36 @@
 {% block content %}
 <section class="py-5">
   <div class="container">
-    <h2 class="mb-3">Contact</h2>
-    <p class="text-muted">Have a question or want to work together? Send a short message.</p>
-    <form method="post" class="mt-4">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit" class="btn btn-success">Send</button>
-    </form>
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <h2 class="mb-3">Contact</h2>
+        <p class="text-muted">Have a question or want to work together? Send a short message or email us at <a href="mailto:hello@example.com">hello@example.com</a>.</p>
+        <dl class="row">
+          <dt class="col-4 text-muted">Email</dt><dd class="col-8">maorblumberg@gmail.com</dd>
+          <dt class="col-4 text-muted">Phone</dt><dd class="col-8">+972543276073</dd>
+          <dt class="col-4 text-muted">Hours</dt><dd class="col-8">Mon–Fri</dd>
+        </dl>
+      </div>
+      <div class="col-lg-7">
+        <div class="card contact-card shadow-sm">
+          <div class="card-body contact-form">
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-success">{{ message }}</div>
+              {% endfor %}
+            {% endif %}
+            <form method="post" novalidate>
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div class="d-flex gap-2 mt-3">
+                <button type="submit" class="btn btn-success">Send</button>
+                <a href="/" class="btn btn-outline-secondary">Cancel</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 {% endblock %}

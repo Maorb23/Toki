@@ -89,6 +89,7 @@ STATIC_ROOT = str(BASE_DIR / 'staticfiles')
 # WhiteNoise configuration
 if DEBUG :
     # Development: don't require manifest file
+    DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': BASE_DIR / 'db.sqlite3'}}
     WHITENOISE_USE_FINDERS = True
     WHITENOISE_MAX_AGE = 0
     STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"

@@ -1,12 +1,13 @@
 :root{
-  --color-primary: #1f7a5a; /* primary brand green */
-  --color-accent: #17a673;
+  --color-primary: #0ea37a; /* vivid brand green */
+  --color-accent: #4bd09a;
   --bg: #ffffff;
-  --surface: #f7fbf8;
-  --text: #0f1720;
+  --surface: linear-gradient(180deg,#f6fbf9 0%, #eef8f2 100%);
+  --text: #07121a;
   --muted: #6b7280;
-  --radius-lg: 14px;
-  --container-max: 1100px;
+  --radius-lg: 18px;
+  --container-max: 1300px;
+  --glass: rgba(255,255,255,0.65);
 }
 
 /* Base */
@@ -23,18 +24,38 @@ body {
 .site-header { background: #fff; }
 
 .hero-section {
-  background: linear-gradient(180deg, #ffffff 0%, var(--surface) 100%);
-  border-bottom: 1px solid #eef2ef;
-  padding-top: 5rem;
-  padding-bottom: 4rem;
+  background: radial-gradient(1200px 400px at 10% 10%, rgba(14,163,122,0.06), transparent), var(--surface);
+  border-bottom: 1px solid rgba(7,18,26,0.06);
+  padding-top: 6rem;
+  padding-bottom: 5rem;
+  position: relative;
 }
 
-.hero-card {
-  background: var(--bg);
-  border: 1px solid rgba(15,23,32,0.06);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 10px 30px rgba(15,23,32,0.06);
+/* Decorative floating accent shapes */
+.hero-section::before,
+.hero-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(36px);
+  opacity: 0.45;
+  pointer-events: none;
 }
+.hero-section::before { width: 360px; height: 360px; left: -80px; top: -60px; background: linear-gradient(120deg, rgba(14,163,122,0.18), rgba(75,208,154,0.08)); }
+.hero-section::after  { width: 260px; height: 260px; right: -40px; bottom: -40px; background: linear-gradient(120deg, rgba(14,163,122,0.10), rgba(75,208,154,0.05)); }
+
+.hero-card {
+  background: var(--glass);
+  backdrop-filter: blur(6px) saturate(120%);
+  border: 1px solid rgba(7,18,26,0.06);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 18px 50px rgba(7,18,26,0.08);
+  transition: transform 280ms ease, box-shadow 280ms ease;
+}
+.hero-card:hover { transform: translateY(-6px); box-shadow: 0 28px 80px rgba(7,18,26,0.12); }
+
+.hero-card.hero-card-lg { max-width: 1100px; padding: 4.5rem; margin: 1.5rem auto; }
+.hero-card .hero-logo { max-width: 220px; margin: 0 auto 1rem auto; display: block; }
 
 .feature-card {
   background: var(--bg);
@@ -90,12 +111,23 @@ body {
 .navbar .nav-link { color: var(--muted); margin-left: 0.5rem; margin-right: 0.5rem; }
 .navbar .nav-link:hover, .navbar .nav-link:focus { color: var(--text); }
 
+/* Force right-alignment for navbar items and add spacing */
+.navbar .navbar-nav { margin-left: auto !important; align-items: center; }
+.navbar .nav-item { margin-left: 0.6rem; }
+.navbar-brand { z-index: 2; }
+.navbar { padding-right: 16px; }
+
 /* Buttons */
 .btn-primary, .btn-success { background: var(--color-primary); border-color: var(--color-primary); }
 .btn-primary:hover, .btn-success:hover { background: var(--color-accent); border-color: var(--color-accent); }
 
 /* Container override for landing pages */
-.container { max-width: var(--container-max); }
+.toki-container {
+  max-width: var(--container-max);
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
 
 @media (max-width: 900px) {
   .hero-section { padding-top: 3.5rem; padding-bottom: 3rem; }
@@ -107,3 +139,31 @@ body {
   .hero-logo { width: 72px; }
   .container { padding-left: 16px; padding-right: 16px; }
 }
+
+/* Constrain hero card to avoid layout shift and overflow */
+.hero-card { max-width: 460px; margin-left: 0; margin-right: auto; }
+.hero-logo { max-width: 96px; height: auto; }
+
+/* Optional: prevent horizontal scroll caused by accidental overflow */
+html, body { overflow-x: hidden; }
+
+/* Navbar: ensure the right-aligned links sit flush to the page edge on large screens */
+.position-relative .navbar-nav { margin: 0; }
+
+/* Right-aligned navbar on large screens */
+.nav-right { padding-right: 28px; z-index: 10; }
+.nav-right .nav-link { padding-left: 0.75rem; padding-right: 0.75rem; }
+.nav-right .nav-item + .nav-item { margin-left: 0.5rem; }
+
+/* Contact form styling: make inputs/textareas full width when Django form doesn't add classes */
+.contact-form input, .contact-form textarea, .contact-form select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(15,23,32,0.08);
+  border-radius: 6px;
+  background: #fff;
+}
+.contact-form p { margin-bottom: 0.75rem; }
+
+.contact-card { border-radius: 10px; }
