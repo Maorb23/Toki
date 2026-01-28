@@ -1,6 +1,9 @@
 :root{
   --color-primary: #0ea37a; /* vivid brand green */
   --color-accent: #4bd09a;
+  --pop-pink: #2fc1ff;
+  --pop-purple: #2ba0ff;
+  --neon: rgba(255,46,140,0.14);
   --bg: #ffffff;
   --surface: linear-gradient(180deg,#f6fbf9 0%, #eef8f2 100%);
   --text: #07121a;
@@ -13,7 +16,7 @@
 /* Base */
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: 'Poppins', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   background: var(--surface);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
@@ -52,7 +55,7 @@ body {
   box-shadow: 0 18px 50px rgba(7,18,26,0.08);
   transition: transform 280ms ease, box-shadow 280ms ease;
 }
-.hero-card:hover { transform: translateY(-6px); box-shadow: 0 28px 80px rgba(7,18,26,0.12); }
+.hero-card:hover { transform: translateY(-6px); box-shadow: 0 28px 80px rgba(7,15,26,0.12); }
 
 .hero-card.hero-card-lg { max-width: 1100px; padding: 4.5rem; margin: 1.5rem auto; }
 .hero-card .hero-logo { max-width: 220px; margin: 0 auto 1rem auto; display: block; }
@@ -87,19 +90,36 @@ body {
 }
 
 /* icon circle */
+/* --- Feature icon tile (clean, professional) --- */
+/* =========================
+   Feature icon (clean + calm)
+   ========================= */
+
 .feature-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%; /* circle, not square */
+  background: rgba(14,163,122,0.08);
+  border: 1px solid rgba(14,163,122,0.18);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
   flex-shrink: 0;
-  margin-right: 6px;
-  background: linear-gradient(135deg, rgba(14,163,122,0.12), rgba(75,208,154,0.06));
-  border: 1px solid rgba(7,18,26,0.04);
 }
+
+.feature-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    var(--color-accent),
+    var(--color-primary)
+  );
+  box-shadow: 0 4px 12px rgba(14,163,122,0.35);
+}
+
+
 
 /* card entrance animation */
 @keyframes floatUp {
@@ -237,6 +257,10 @@ html, body { overflow-x: hidden; }
 }
 .btn-primary:active { transform: translateY(1px) scale(.997); }
 
+.btn-primary { box-shadow: 0 14px 40px rgba(122,43,255,0.12), 0 6px 26px rgba(255,47,166,0.06); }
+.btn-primary:hover { transform: translateY(-4px) scale(1.02); }
+.btn-primary:focus { box-shadow: 0 18px 60px rgba(122,43,255,0.16), 0 6px 30px rgba(255,47,166,0.08); }
+
 .btn-outline-secondary {
   background: transparent;
   border: 1px solid rgba(7,18,26,0.08);
@@ -248,52 +272,91 @@ html, body { overflow-x: hidden; }
 .btn-outline-secondary:hover { background: rgba(14,163,122,0.06); border-color: rgba(14,163,122,0.16); box-shadow: 0 10px 30px rgba(14,163,122,0.06); }
 
 /* Glowing gradient border behind the hero card */
-.hero-card { position: relative; overflow: visible; }
+.hero-card { position: relative; overflow: visible; isolation: isolate; }
 .hero-card::before {
   content: "";
   position: absolute;
-  inset: -6px; /* so glow appears as an edge */
+  inset: -8px;
   z-index: -1;
-  border-radius: calc(var(--radius-lg) + 6px);
-  background: linear-gradient(90deg, rgba(14,163,122,0.12), rgba(75,208,154,0.08) 40%, rgba(102,224,179,0.06));
-  filter: blur(12px);
-  opacity: 0.95;
-.hero-card { isolation: isolate; }
-  transition: transform .28s ease, filter .28s ease;
+  border-radius: calc(var(--radius-lg) + 8px);
+  background: linear-gradient(
+    90deg,
+    rgba(14,163,122,0.20),
+    rgba(75,208,154,0.12)
+  );
+  filter: blur(20px);
+  opacity: 0.75;
 }
-.hero-card:hover::before { transform: scale(1.02); filter: blur(8px); }
+
+.hero-card:hover::before { transform: scale(1.03); filter: blur(10px); }
+
+/* tiny floating sparkles behind the card for extra pop */
+.hero-card::after {
+  content: "";
+  position: absolute;
+  inset: -24px -8px -48px -8px;
+  z-index: -2;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 15% 25%, rgba(14,163,122,0.10) 0 6px, transparent 8px),
+    radial-gradient(circle at 80% 60%, rgba(75,208,154,0.08) 0 6px, transparent 8px);
+  background-repeat: no-repeat;
+  animation: floatSparkles 8s linear infinite;
+}
+
+
+@keyframes floatSparkles {
+  0% { transform: translateY(0) rotate(0deg); opacity: .9 }
+  50% { transform: translateY(-6px) rotate(4deg); opacity: .65 }
+  100% { transform: translateY(0) rotate(0deg); opacity: .9 }
+}
 
 /* Heading sheen and underline */
 .hero-section h1 {
   font-weight: 800;
   font-size: clamp(2rem, 4.2vw, 3.6rem);
   line-height: 1.02;
-  background: linear-gradient(90deg, rgba(7,18,26,0.95), rgba(7,18,26,0.65));
+  background: linear-gradient(90deg, #0b0b0b 0%, #2b2b2b 35%, var(--pop-pink) 60%, var(--pop-purple) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 6px 22px rgba(122,43,255,0.06), 0 2px 8px rgba(255,47,166,0.06);
+  position: relative;
+  background-size: 220% 100%;
+  animation: headlineShimmer 5s linear infinite;
 }
 .hero-section h1::after {
   content: "";
   display: block;
-  width: 84px;
-/* Attempt to remove white background in raster logos by blending white to transparent.
-   If the white area is part of the image itself this will visually hide it against
-   the hero-card; best fix is a transparent PNG/SVG. */
+  width: 160px;              /* ← elongated */
+  height: 4px;               /* ← slimmer = more elegant */
+  margin-top: 16px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-accent)
+  );
+  opacity: 0.9;
+}
+
 .hero-logo, .brand-logo { mix-blend-mode: multiply; }
-  height: 6px;
-  margin-top: 14px;
-  border-radius: 8px;
-  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+@keyframes headlineShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Fancy badges */
 .badge {
-  background: linear-gradient(90deg, rgba(255,255,255,0.98), rgba(247,255,249,0.95));
-  border: 1px solid rgba(7,18,26,0.04);
-  color: #0b4f3f;
-  font-weight: 600;
-  padding: .42rem .65rem;
+  background: linear-gradient(90deg, var(--pop-pink), var(--pop-purple));
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  padding: .48rem .8rem;
   border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  box-shadow: 0 8px 36px rgba(122,43,255,0.12);
 }
 
 /* Logo interactions */
@@ -323,4 +386,220 @@ img.brand-logo, img.hero-logo { border: 0; }
 /* small accessibility: focus rings for keyboard users */
 .nav-link:focus, .btn:focus { outline: 3px solid rgba(14,163,122,0.14); outline-offset: 3px; }
 
-/* end flashy enhancements */
+/* small pop pulse for links on hover */
+.nav-link:hover { transform: translateY(-2px); transition: transform .18s ease; }
+
+/* quick neon flicker on load for maximum drama */
+@keyframes neonPulse {
+  0% { box-shadow: 0 0 0 rgba(255,47,166,0); }
+  40% { box-shadow: 0 12px 40px rgba(255,47,166,0.12); }
+  100% { box-shadow: 0 8px 28px rgba(122,43,255,0.08); }
+}
+.hero-card { animation: neonPulse 1.2s ease both; }
+
+/* new animations */
+/* =========================
+   PRO FLASH (same colors)
+   ========================= */
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+/* Smooth default easing */
+:root { --ease-pro: cubic-bezier(.2,.9,.2,1); }
+
+/* 1) Hero background: slow, classy drift */
+.hero-section {
+  overflow: hidden; /* keep glow shapes contained */
+}
+
+@keyframes heroDrift {
+  0%   { transform: translate3d(0,0,0) scale(1); }
+  50%  { transform: translate3d(0,-10px,0) scale(1.01); }
+  100% { transform: translate3d(0,0,0) scale(1); }
+}
+
+.hero-section::before,
+.hero-section::after {
+  animation: heroDrift 10s var(--ease-pro) infinite;
+}
+.hero-section::after { animation-duration: 12s; }
+
+/* 2) Hero content: elegant staged entrance */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-section .col-lg-6:first-child > * {
+  opacity: 0;
+  animation: riseIn .75s var(--ease-pro) both;
+}
+
+.hero-section .col-lg-6:first-child > *:nth-child(1) { animation-delay: .05s; } /* small label */
+.hero-section .col-lg-6:first-child > *:nth-child(2) { animation-delay: .12s; } /* h1 */
+.hero-section .col-lg-6:first-child > *:nth-child(3) { animation-delay: .20s; } /* lead */
+.hero-section .col-lg-6:first-child > *:nth-child(4) { animation-delay: .28s; } /* buttons */
+.hero-section .col-lg-6:first-child > *:nth-child(5) { animation-delay: .36s; } /* badges */
+
+/* Hero card comes in slightly later */
+.hero-section .col-lg-6:last-child .hero-card {
+  opacity: 0;
+  animation: riseIn .85s var(--ease-pro) .20s both;
+}
+
+/* 3) Hero card: “glass sweep” shimmer (professional) */
+.hero-card { position: relative; overflow: hidden; }
+
+@keyframes glassSweep {
+  0%   { transform: translateX(-120%) skewX(-18deg); opacity: 0; }
+  15%  { opacity: .65; }
+  35%  { opacity: 0; }
+  100% { transform: translateX(220%) skewX(-18deg); opacity: 0; }
+}
+
+.hero-card::marker { content: ""; } /* no-op, avoids odd list markers in some resets */
+
+.hero-card::after {
+  /* keep your existing sparkles? If you want BOTH effects, use a different pseudo element.
+     We'll switch the shimmer to a new layer using background only and keep your current sparkles by moving them to ::before.
+     If you prefer to keep your sparkles as-is, skip this block. */
+}
+
+/* Add shimmer using a nested overlay via background-image */
+.hero-card::before {
+  /* Keep your current glow: already defined earlier.
+     We'll add a shimmer layer using background on the card itself instead. */
+}
+
+.hero-card {
+  background-image:
+    linear-gradient(120deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.55) 14%,
+      rgba(255,255,255,0) 28%
+    );
+  background-size: 200% 100%;
+  background-position: -120% 0;
+}
+
+.hero-card:hover {
+  background-position: 220% 0;
+  transition: background-position 900ms var(--ease-pro);
+}
+
+/* 4) Buttons: subtle “press” + glow tighten */
+.btn-primary, .btn-outline-secondary {
+  transform: translateZ(0);
+}
+
+.btn-primary:hover { box-shadow: 0 16px 46px rgba(14,163,122,0.18), 0 8px 18px rgba(0,0,0,0.06); }
+.btn-outline-secondary:hover { transform: translateY(-2px); }
+
+/* 5) Navbar links: underline slide (clean + pro) */
+.navbar .nav-link {
+  position: relative;
+  transition: color .18s ease, transform .18s ease;
+}
+
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .22s var(--ease-pro);
+  opacity: .9;
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link:focus::after {
+  transform: scaleX(1);
+}
+
+/* 6) Feature cards: sheen + micro-tilt (pro, not gimmicky) */
+.feature-card {
+  transform: translateZ(0);
+  overflow: hidden;
+}
+
+.feature-card::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(14,163,122,0.12), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(43,160,255,0.10), transparent 50%);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .28s var(--ease-pro), transform .28s var(--ease-pro);
+  pointer-events: none;
+}
+
+.feature-card:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px) rotateX(1deg) rotateY(-1deg);
+}
+
+/* 7) Badges: gentle pulse on load (not looping) */
+@keyframes badgePop {
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+
+
+/* Maybe useless */
+/* --- Premium tags (replace Bootstrap badges) --- */
+.feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.tag {
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(14,163,122,0.14),
+    rgba(75,208,154,0.08)
+  );
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.tag::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.5),
+    transparent
+  );
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+
+.tag:hover::after {
+  transform: translateX(120%);
+}
+
