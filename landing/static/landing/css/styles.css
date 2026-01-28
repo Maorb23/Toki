@@ -119,6 +119,14 @@ body {
   box-shadow: 0 4px 12px rgba(14,163,122,0.35);
 }
 
+.feature-card:hover .feature-dot {
+  transform: scale(1.25);
+  transition: transform 0.25s ease;
+}
+
+.feature-card:hover .feature-icon {
+  background: rgba(14,163,122,0.12);
+}
 
 
 /* card entrance animation */
