@@ -58,10 +58,58 @@ body {
 .hero-card .hero-logo { max-width: 220px; margin: 0 auto 1rem auto; display: block; }
 
 .feature-card {
-  background: var(--bg);
-  border: 1px solid rgba(15,23,32,0.04);
-  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(249,255,251,0.98));
+  border: 1px solid rgba(7,18,26,0.04);
+  border-radius: 14px;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  box-shadow: 0 10px 30px rgba(7,18,26,0.04);
+  transition: transform .26s ease, box-shadow .26s ease, background .26s ease;
+  position: relative;
 }
+
+/* Make cards feel lighter and animate in */
+.feature-card:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(7,18,26,0.08); }
+
+/* vertical accent stripe */
+.feature-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 6px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--color-accent), var(--color-primary));
+  opacity: 0.95;
+}
+
+/* icon circle */
+.feature-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  margin-right: 6px;
+  background: linear-gradient(135deg, rgba(14,163,122,0.12), rgba(75,208,154,0.06));
+  border: 1px solid rgba(7,18,26,0.04);
+}
+
+/* card entrance animation */
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(14px) scale(.995); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.row.g-4 .col-md-4 .feature-card { animation: floatUp .6s cubic-bezier(.2,.9,.3,1) both; }
+.row.g-4 .col-md-4:nth-child(1) .feature-card { animation-delay: .06s; }
+.row.g-4 .col-md-4:nth-child(2) .feature-card { animation-delay: .16s; }
+.row.g-4 .col-md-4:nth-child(3) .feature-card { animation-delay: .26s; }
 
 .image-placeholder {
   display: flex;
@@ -210,6 +258,7 @@ html, body { overflow-x: hidden; }
   background: linear-gradient(90deg, rgba(14,163,122,0.12), rgba(75,208,154,0.08) 40%, rgba(102,224,179,0.06));
   filter: blur(12px);
   opacity: 0.95;
+.hero-card { isolation: isolate; }
   transition: transform .28s ease, filter .28s ease;
 }
 .hero-card:hover::before { transform: scale(1.02); filter: blur(8px); }
@@ -227,6 +276,10 @@ html, body { overflow-x: hidden; }
   content: "";
   display: block;
   width: 84px;
+/* Attempt to remove white background in raster logos by blending white to transparent.
+   If the white area is part of the image itself this will visually hide it against
+   the hero-card; best fix is a transparent PNG/SVG. */
+.hero-logo, .brand-logo { mix-blend-mode: multiply; }
   height: 6px;
   margin-top: 14px;
   border-radius: 8px;
