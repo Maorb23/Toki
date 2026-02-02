@@ -200,8 +200,8 @@ body {
 /* Container override for landing pages */
 .toki-container {
   max-width: var(--container-max);
-  padding-left: 48px;
-  padding-right: 48px;
+  padding-left: 16px;
+  padding-right: 36px;
 }
 
 

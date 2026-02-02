@@ -37,3 +37,13 @@ def contact(request):
 
 def contact_thanks(request):
     return render(request, 'landing/contact_thanks.html')
+
+
+def privacy(request):
+    """Redirect to the externally-hosted privacy policy."""
+    return redirect('https://www.privacypolicies.com/live/62bc86c1-f77d-4701-9b52-03a477afca0d')
+
+
+def terms(request):
+    """Redirect to the externally-hosted terms of service."""
+    return redirect('https://www.privacypolicies.com/live/a825d9c0-2fdf-4261-8118-ac06231af9ca')
