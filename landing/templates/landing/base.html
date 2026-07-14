@@ -4,34 +4,51 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Toki{% endblock %}</title>
-
-    <link rel="icon" type="image/x-icon" href="{% static 'landing/images/birds.png' %}">
+    <meta name="description" content="TOKI helps teams communicate effectively by understanding the person behind every message.">
+    <meta name="theme-color" content="#12203a">
+    <title>{% block title %}TOKI | Better communication starts with understanding{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{% static 'landing/images/TOKI_symbol_final.png' %}">
     <link rel="stylesheet" href="{% static 'landing/css/styles.css' %}">
+    <script src="{% static 'landing/js/site.js' %}" defer></script>
   </head>
 
   <body>
-    <header class="site-header">
-      <div class="container">
-        <a class="brand" href="/">
-          <img src="{% static 'landing/images/birds.png' %}" alt="Birds" class="brand-logo">
-          <span class="brand-text">Toki</span>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header" data-header>
+      <div class="container header-inner">
+        <a class="brand" href="{% url 'index' %}" aria-label="TOKI home">
+          <img src="{% static 'landing/images/TOKI_symbol_final.png' %}" alt="" class="brand-logo">
+          <span class="brand-name">TOKI</span>
         </a>
-        <nav class="nav">
-          <a href="/about/">About</a>
-          <a href="/contact/">Contact</a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" data-nav-toggle>
+          <span class="sr-only">Open navigation</span>
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="nav" id="site-navigation" aria-label="Main navigation" data-nav>
+          <a href="{% url 'index' %}#how-it-works">How it works</a>
+          <a href="{% url 'index' %}#impact">Impact</a>
+          <a href="{% url 'index' %}#roadmap">Roadmap</a>
+          <a href="{% url 'index' %}#demo">Demo</a>
+          <a class="button button-small" href="{% url 'contact' %}">Talk to us</a>
         </nav>
       </div>
     </header>
 
-    <main>
-      <div class="container">
-        {% block content %}{% endblock %}
-      </div>
+    <main id="main-content">
+      {% block content %}{% endblock %}
     </main>
 
     <footer class="site-footer">
-      <div class="container">© Toki — Simple conversations, always online.</div>
+      <div class="container footer-inner">
+        <a class="brand footer-brand" href="{% url 'index' %}" aria-label="TOKI home">
+          <img src="{% static 'landing/images/TOKI_symbol_final.png' %}" alt="" class="brand-logo">
+          <span class="brand-name">TOKI</span>
+        </a>
+        <p>Transforming communication into understanding.</p>
+        <p class="footer-meta">© <span data-current-year></span> TOKI</p>
+      </div>
     </footer>
   </body>
 </html>

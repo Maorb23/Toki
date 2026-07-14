@@ -1,8 +1,9 @@
 {% extends 'landing/base.html' %}
-
-{% block title %}Thanks — Toki{% endblock %}
-
+{% block title %}Message received | TOKI{% endblock %}
 {% block content %}
-<h2>Thanks!</h2>
-<p>We received your message and will be in touch soon.</p>
+<section class="simple-page"><div class="container"><div class="page-card">
+  <p class="eyebrow">Message received</p><h1>Thanks for reaching out.</h1>
+  <p>We received your message and will be in touch soon.</p>
+  <div class="page-actions"><a class="button button-primary" href="{% url 'index' %}">Back to TOKI</a></div>
+</div></div></section>
 {% endblock %}

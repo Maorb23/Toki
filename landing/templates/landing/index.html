@@ -1,14 +1,248 @@
 {% extends 'landing/base.html' %}
 {% load static %}
-{% block title %}Toki — Conversational solutions{% endblock %}
+
+{% block title %}TOKI | Better communication starts with understanding{% endblock %}
 
 {% block content %}
-<section class="hero">
-  <div class="hero-inner">
-    <h1>Toki</h1>
-    <img src="{% static 'landing/images/birds.png' %}" alt="Toki logo" class="hero-logo">
-    <p class="tagline">Humans-first conversational services — simple, reliable, always online.</p>
-    <p><a class="cta" href="/contact/">Get in touch</a></p>
+<section class="hero section-dark">
+  <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
+  <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      <p class="eyebrow eyebrow-light">{{ hero.eyebrow }}</p>
+      <h1>{{ hero.title }}</h1>
+      <p class="hero-lead">{{ hero.description }}</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#demo">Watch the demo <span aria-hidden="true">→</span></a>
+        <a class="button button-ghost" href="#how-it-works">See how it works</a>
+      </div>
+      <p class="hero-note"><span aria-hidden="true">●</span> Built for modern, diverse teams</p>
+    </div>
+
+    <div class="hero-visual reveal" aria-label="TOKI connects different communication styles">
+      <div class="orbit orbit-one" aria-hidden="true"></div>
+      <div class="orbit orbit-two" aria-hidden="true"></div>
+      <div class="logo-card">
+        <img src="{% static 'landing/images/TOKI_symbol_final.png' %}" alt="TOKI symbol">
+      </div>
+      <div class="floating-card floating-card-top">
+        <span class="status-dot"></span>
+        Communication profile ready
+      </div>
+      <div class="floating-card floating-card-bottom">
+        <span class="spark">✦</span>
+        Message personalized
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section problem-section" id="problem">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="eyebrow">The problem</p>
+      <h2>Communication is not one-size-fits-all.</h2>
+      <p>People receive the same message differently. Without context about the person behind the conversation, even good intentions can miss the mark.</p>
+    </div>
+
+    <div class="problem-grid">
+      <div class="preference-list reveal">
+        {% for point in problem_points %}
+          <div class="preference-item">
+            <span class="preference-number">0{{ forloop.counter }}</span>
+            <p>{{ point }}</p>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="outcomes-card reveal">
+        <p class="card-label">When styles do not match</p>
+        <div class="outcomes-grid">
+          {% for outcome in problem_outcomes %}
+            <div class="outcome"><span aria-hidden="true">↘</span>{{ outcome }}</div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="insight-banner reveal">
+      <span class="insight-icon" aria-hidden="true">i</span>
+      <div>
+        <h3>Teams have communication tools, but not understanding tools.</h3>
+        <p>Email, chat, and messaging tools help people send messages. They do not explain how the receiver prefers feedback, detail, or tone. The challenge is not sending messages—it is sending them effectively.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section solution-section">
+  <div class="container solution-grid">
+    <div class="solution-copy reveal">
+      <p class="eyebrow">Meet TOKI</p>
+      <h2>Understanding built into every conversation.</h2>
+      <p class="section-lead">TOKI creates a personalized communication profile for every team member, helping people adapt messages to the person receiving them.</p>
+      <ul class="check-list">
+        {% for feature in profile_features %}
+          <li><span aria-hidden="true">✓</span>{{ feature }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="profile-card reveal">
+      <div class="profile-topbar">
+        <div class="profile-person">
+          <span class="profile-avatar">AL</span>
+          <div><strong>Communication profile</strong><small>Personalized insights</small></div>
+        </div>
+        <span class="profile-badge">Active</span>
+      </div>
+      <div class="profile-score">
+        <span class="score-ring"><span>T</span></span>
+        <div><small>Preferred style</small><strong>Clear & contextual</strong></div>
+      </div>
+      <div class="profile-bars">
+        <div><span>Directness</span><i style="--value: 72%"></i></div>
+        <div><span>Detail</span><i style="--value: 58%"></i></div>
+        <div><span>Encouragement</span><i style="--value: 84%"></i></div>
+      </div>
+      <div class="profile-tip"><span>✦</span><p><strong>Communication tip</strong>Lead with context, then make the next step clear.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section process-section" id="how-it-works">
+  <div class="container">
+    <div class="section-heading section-heading-centered reveal">
+      <p class="eyebrow">How it works</p>
+      <h2>Simple. Fast. Effective.</h2>
+      <p>Four clear steps turn personal preferences into better team communication.</p>
+    </div>
+    <div class="steps-grid">
+      {% for step in steps %}
+        <article class="step-card reveal">
+          <span class="step-number">{{ step.number }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.text }}</p>
+          {% if not forloop.last %}<span class="step-arrow" aria-hidden="true">→</span>{% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section personalization-section">
+  <div class="container personalization-grid">
+    <div class="personalization-copy reveal">
+      <p class="eyebrow">Personalized communication</p>
+      <h2>Same message. Different people.</h2>
+      <p>Choose a communication style to see how TOKI helps the sender shape the same request for the person receiving it.</p>
+      <div class="style-tabs" role="tablist" aria-label="Communication style examples">
+        {% for example in message_examples %}
+          <button class="style-tab{% if forloop.first %} is-active{% endif %}" type="button" role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="example-{{ example.id }}" data-example-tab="{{ example.id }}">{{ example.label }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="message-demo reveal">
+      <div class="message-window-bar"><span></span><span></span><span></span><small>TOKI message guidance</small></div>
+      {% for example in message_examples %}
+        <div class="example-panel{% if forloop.first %} is-active{% endif %}" id="example-{{ example.id }}" role="tabpanel" data-example-panel="{{ example.id }}" {% if not forloop.first %}hidden{% endif %}>
+          <div class="receiver-row"><span class="receiver-avatar">{{ forloop.counter }}</span><div><small>Writing for</small><strong>{{ example.person }}</strong></div></div>
+          <div class="preference-note"><span aria-hidden="true">✦</span>{{ example.preferences }}</div>
+          <div class="message-bubble"><small>Suggested message</small><p>“{{ example.message }}”</p></div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section impact-section section-dark" id="impact">
+  <div class="container">
+    <div class="section-heading reveal">
+      <p class="eyebrow eyebrow-light">Business impact</p>
+      <h2>Why companies need TOKI.</h2>
+      <p>Better understanding creates stronger teams and better business results.</p>
+    </div>
+    <div class="impact-grid">
+      {% for item in business_impact %}
+        <article class="impact-card reveal">
+          <span class="impact-icon" aria-hidden="true">{% cycle '↗' '⌁' '◎' '◇' '♡' %}</span>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.text }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section opportunity-section">
+  <div class="container opportunity-grid">
+    <div class="opportunity-copy reveal">
+      <p class="eyebrow">Market opportunity</p>
+      <h2>Communication is a global challenge.</h2>
+      <p class="section-lead">Millions of employees communicate digitally every day. TOKI turns communication into a strategic advantage across:</p>
+      <div class="market-tags">
+        {% for need in market_needs %}<span>{{ need }}</span>{% endfor %}
+      </div>
+    </div>
+    <div class="business-model reveal">
+      <p class="card-label">Business model</p>
+      <h3>B2B SaaS subscription</h3>
+      <p>Monthly or annual subscription per employee, designed to grow with every organization.</p>
+      <div class="tier-list">
+        {% for tier in pricing_tiers %}<span>{{ tier }}{% if not forloop.last %}<i>→</i>{% endif %}</span>{% endfor %}
+      </div>
+      <div class="additional-tools">
+        <small>Additional tools</small>
+        <p>{% for tool in additional_tools %}{{ tool }}{% if not forloop.last %} · {% endif %}{% endfor %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section roadmap-section" id="roadmap">
+  <div class="container">
+    <div class="section-heading section-heading-centered reveal">
+      <p class="eyebrow">What’s next</p>
+      <h2>From validation to global impact.</h2>
+    </div>
+    <div class="roadmap-list reveal">
+      {% for item in roadmap %}
+        <div class="roadmap-item roadmap-{{ item.status }}">
+          <span class="roadmap-marker">{% if item.status == 'complete' %}✓{% elif item.status == 'active' %}●{% else %}{{ forloop.counter }}{% endif %}</span>
+          <div><small>{{ item.phase }}</small><strong>{{ item.title }}</strong></div>
+          <span class="roadmap-status">{% if item.status == 'complete' %}Complete{% elif item.status == 'active' %}In progress{% else %}Upcoming{% endif %}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section demo-section" id="demo">
+  <div class="container">
+    <div class="section-heading section-heading-centered reveal">
+      <p class="eyebrow">Product demo</p>
+      <h2>See TOKI in action.</h2>
+      <p>Watch how TOKI transforms communication preferences into practical guidance for stronger everyday conversations.</p>
+    </div>
+    <div class="video-shell reveal" data-video-shell>
+      <video controls preload="metadata" playsinline data-demo-video>
+        <source src="{% static 'landing/videos/full_demo_day_edited.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <button class="video-cover" type="button" data-video-play aria-label="Play TOKI product demo">
+        <span class="play-button" aria-hidden="true">▶</span>
+        <span><strong>Watch the full demo</strong><small>See personalized communication in practice</small></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="section final-cta section-dark">
+  <div class="container final-cta-inner reveal">
+    <p class="eyebrow eyebrow-light">Why now?</p>
+    <h2>The future of work depends on better communication.</h2>
+    <p>Remote work is growing, teams are becoming more diverse, and communication challenges are increasing. TOKI sits at the intersection of productivity and employee experience.</p>
+    <a class="button button-primary" href="{% url 'contact' %}">Start a conversation <span aria-hidden="true">→</span></a>
   </div>
 </section>
 {% endblock %}

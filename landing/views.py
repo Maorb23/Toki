@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import ContactForm
+from .content import HOME_CONTENT
 
 
 def index(request):
-    return render(request, 'landing/index.html')
+    return render(request, 'landing/index.html', HOME_CONTENT)
 
 
 def about(request):

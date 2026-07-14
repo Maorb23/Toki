@@ -1,13 +1,14 @@
 {% extends 'landing/base.html' %}
-
-{% block title %}Contact — Toki{% endblock %}
-
+{% block title %}Talk to TOKI | Better team communication{% endblock %}
 {% block content %}
-<h2>Contact</h2>
-<p>Have a question or want to work together? Send a short message.</p>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" class="cta">Send</button>
-</form>
+<section class="simple-page"><div class="container"><div class="page-card">
+  <p class="eyebrow">Start a conversation</p>
+  <h1>Let's build stronger communication together.</h1>
+  <p>Interested in a pilot, partnership, or product conversation? Send us a note and we'll be in touch.</p>
+  <form method="post" class="contact-form">
+    {% csrf_token %}
+    {% for field in form %}<div class="field-group">{{ field.label_tag }}{{ field }}{% if field.errors %}<p class="field-errors">{{ field.errors|striptags }}</p>{% endif %}</div>{% endfor %}
+    <button type="submit" class="button button-primary">Send message <span aria-hidden="true">&rarr;</span></button>
+  </form>
+</div></div></section>
 {% endblock %}

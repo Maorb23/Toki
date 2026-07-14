@@ -1,8 +1,9 @@
 {% extends 'landing/base.html' %}
-
-{% block title %}About — Toki{% endblock %}
-
+{% block title %}About TOKI | Communication with understanding{% endblock %}
 {% block content %}
-<h2>About Toki</h2>
-<p>Toki provides simple, reliable conversational tools for small teams and projects. We focus on clarity, uptime, and a clean user experience.</p>
+<section class="simple-page"><div class="container"><div class="page-card">
+  <p class="eyebrow">About TOKI</p><h1>Transforming communication into understanding.</h1>
+  <p>TOKI creates personalized communication profiles that help people adapt messages to the person receiving them. Better understanding leads to stronger teams and better business results.</p>
+  <div class="page-actions"><a class="button button-primary" href="{% url 'index' %}#demo">Watch the demo</a><a class="button button-secondary" href="{% url 'contact' %}">Talk to us</a></div>
+</div></div></section>
 {% endblock %}

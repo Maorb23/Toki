@@ -4,6 +4,4 @@ whitenoise
 python-dotenv
 dj-database-url
 django-extensions
-#add Werkzeug
-Werkzeug>=3.0
 psycopg2-binary
