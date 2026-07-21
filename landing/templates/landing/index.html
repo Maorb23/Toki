@@ -185,11 +185,10 @@
       </div>
     </div>
     <div class="business-model reveal">
-      <p class="card-label">Business model</p>
       <h3>B2B SaaS subscription</h3>
       <p>Monthly or annual subscription per employee, designed to grow with every organization.</p>
       <div class="tier-list">
-        {% for tier in pricing_tiers %}<span>{{ tier }}{% if not forloop.last %}<i>→</i>{% endif %}</span>{% endfor %}
+        {% for tier in pricing_tiers %}<span>{{ tier }}</span>{% endfor %}
       </div>
       <div class="additional-tools">
         <small>Additional tools</small>
