@@ -20,6 +20,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const header = document.querySelector("[data-header]");
+  const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 18);
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, { passive: true });
+
+  document.querySelectorAll("[data-nav-link]").forEach((link) => {
+    if (!link.hash || link.pathname !== window.location.pathname || !("IntersectionObserver" in window)) return;
+    const section = document.querySelector(link.hash);
+    if (!section) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      link.classList.toggle("is-active", entry.isIntersecting);
+    }, { rootMargin: "-35% 0px -58%", threshold: 0 });
+    observer.observe(section);
+  });
+
   document.querySelectorAll("[data-example-tab]").forEach((tab) => {
     tab.addEventListener("click", () => {
       const target = tab.dataset.exampleTab;
@@ -53,6 +68,31 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hero = document.querySelector("[data-hero]");
+  const heroVisual = document.querySelector("[data-hero-visual]");
+  if (hero && heroVisual && !reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+    hero.addEventListener("pointermove", (event) => {
+      const bounds = hero.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+      const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+      hero.style.setProperty("--spotlight-x", `${(x + .5) * 100}%`);
+      hero.style.setProperty("--spotlight-y", `${(y + .5) * 100}%`);
+      heroVisual.style.transform = `translate3d(${x * -12}px, ${y * -12}px, 0)`;
+    });
+    hero.addEventListener("pointerleave", () => { heroVisual.style.transform = ""; });
+  }
+
+  if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+    document.querySelectorAll("[data-tilt-card]").forEach((card) => {
+      card.addEventListener("pointermove", (event) => {
+        const bounds = card.getBoundingClientRect();
+        const rotateY = ((event.clientX - bounds.left) / bounds.width - .5) * 5;
+        const rotateX = ((event.clientY - bounds.top) / bounds.height - .5) * -5;
+        card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+      });
+      card.addEventListener("pointerleave", () => { card.style.transform = ""; });
+    });
+  }
   if ("IntersectionObserver" in window && !reduceMotion) {
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((entry) => {

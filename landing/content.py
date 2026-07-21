@@ -6,7 +6,7 @@ the layout, so most content edits only require changing the values below.
 
 HOME_CONTENT = {
     "hero": {
-        "eyebrow": "Team Communication Platform",
+        "eyebrow": "Better Communication For All",
         "title": "Better communication starts with better understanding.",
         "description": (
             "TOKI helps teams communicate effectively by understanding the person "
@@ -114,9 +114,9 @@ HOME_CONTENT = {
         {"phase": "Phase 3", "title": "Pilot with companies", "status": "active"},
         {
             "phase": "Phase 4",
-            "title": "AI-powered communication recommendations",
+            "title": "Platform",
             "status": "upcoming",
         },
-        {"phase": "Phase 5", "title": "Global expansion", "status": "upcoming"},
+        {"phase": "Phase 5", "title": "Product Launch", "status": "upcoming"},
     ],
 }

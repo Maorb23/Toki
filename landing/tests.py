@@ -26,3 +26,23 @@ class LandingPageTests(TestCase):
 
         self.assertRedirects(response, reverse("contact_thanks"))
         self.assertTrue(Message.objects.filter(email="test@example.com").exists())
+
+    def test_contact_form_rejects_a_duplicate_message_body(self):
+        Message.objects.create(
+            name="First User",
+            email="first@example.com",
+            message="A message body that has already been sent.",
+        )
+
+        response = self.client.post(
+            reverse("contact"),
+            {
+                "name": "Second User",
+                "email": "second@example.com",
+                "message": "A message body that has already been sent.",
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "This message has already been sent.")
+        self.assertEqual(Message.objects.count(), 1)
