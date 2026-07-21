@@ -35,23 +35,23 @@ HOME_CONTENT = {
     "steps": [
         {
             "number": "01",
-            "title": "Complete the assessment",
-            "text": "Employees complete a short communication assessment.",
+            "title": "Get Started",
+            "text": "Employees fill out a short communication preferences survey.",
         },
         {
             "number": "02",
-            "title": "Build a profile",
+            "title": "Build a Profile",
             "text": "TOKI builds a personalized communication profile.",
         },
         {
             "number": "03",
-            "title": "Get personal insights",
+            "title": "Get Personal Insights",
             "text": "The sender receives communication insights for the receiver.",
         },
         {
             "number": "04",
-            "title": "Communicate clearly",
-            "text": "The message is delivered clearly and positively.",
+            "title": "Communication Feedback",
+            "text": "Employees can give feedback on the system and communication insights.",
         },
     ],
     "message_examples": [
@@ -75,23 +75,23 @@ HOME_CONTENT = {
     ],
     "business_impact": [
         {
-            "title": "Reduce misunderstandings",
+            "title": "Reduce Misunderstandings",
             "text": "Create less confusion and fewer mistakes.",
         },
         {
-            "title": "Improve productivity",
+            "title": "Improve Productivity",
             "text": "Spend less time clarifying messages.",
         },
         {
-            "title": "Strengthen collaboration",
+            "title": "Strengthen Collaboration",
             "text": "Help departments work together more effectively.",
         },
         {
-            "title": "Reduce workplace conflict",
-            "text": "Close communication gaps before they become friction.",
+            "title": "Guarantee Organizational Culture",
+            "text": "Ensure that company values are reflected in every message.",
         },
         {
-            "title": "Increase retention",
+            "title": "Increase Retention",
             "text": "Support healthier work environments.",
         },
     ],
@@ -109,9 +109,9 @@ HOME_CONTENT = {
         "Leadership Tools",
     ],
     "roadmap": [
-        {"phase": "Phase 1", "title": "Research and validation", "status": "complete"},
-        {"phase": "Phase 2", "title": "MVP development", "status": "complete"},
-        {"phase": "Phase 3", "title": "Pilot with companies", "status": "active"},
+        {"phase": "Phase 1", "title": "Research & Validation", "status": "complete"},
+        {"phase": "Phase 2", "title": "MVP Development", "status": "complete"},
+        {"phase": "Phase 3", "title": "Pilot with Companies", "status": "active"},
         {
             "phase": "Phase 4",
             "title": "Platform Expansion",
