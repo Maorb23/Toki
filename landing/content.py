@@ -114,7 +114,7 @@ HOME_CONTENT = {
         {"phase": "Phase 3", "title": "Pilot with companies", "status": "active"},
         {
             "phase": "Phase 4",
-            "title": "Platform",
+            "title": "Platform Expansion",
             "status": "upcoming",
         },
         {"phase": "Phase 5", "title": "Product Launch", "status": "upcoming"},
