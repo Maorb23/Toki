@@ -6,7 +6,6 @@ the layout, so most content edits only require changing the values below.
 
 HOME_CONTENT = {
     "hero": {
-        "eyebrow": "Better Communication For All",
         "title": "Better communication starts with better understanding.",
         "description": (
             "TOKI helps teams communicate effectively by understanding the person "
